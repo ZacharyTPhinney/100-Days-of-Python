@@ -50,15 +50,29 @@ def proccess_coins():
     Total= (quarters*.25) + (dimes*.10) + (Nickel*.10) + (Pennies*.01)
     return Total
 
-def check_transaction(proccesscoins,drinkprice,money):
+def check_transaction(proccesscoins,drinkprice,money,drink):
+
     if Total<drinkprice:
         print("you do not have enough money")
-        return False
+        print(f"Here is your change ${round(Total,2)}")
+
     else:
-        print("You have enough here's you drink  ")
+
         money+=drinkprice
+        print(f"You have enough here's your {choice} ")
         print(f"Your change is {Total-drinkprice}")
+
+
+
     return money
+
+def make_coffee(resources,drink):
+    for item in drink:
+        resources[item] = resources[item] -drink[item]
+
+    return resources
+
+
 
 while game == True:
     choice = input("☕What would you like?(espresso/latte/cappuccino:")
@@ -74,5 +88,9 @@ while game == True:
         print(drink)
         resource_sufficient(drink["ingredients"])
         Total = proccess_coins()
-        money=check_transaction(Total,drink["cost"],money)
+        money=check_transaction(Total,drink["cost"],money,drink)
+
+        resources = make_coffee(resources,drink["ingredients"])
+
+
 
