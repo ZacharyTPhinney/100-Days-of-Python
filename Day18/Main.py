@@ -1,17 +1,20 @@
-from turtle import Turtle,Screen
+import turtle as t
 import random
-timmy = Turtle()
-colours=["Gold","red","blue","purple","orange"]
-def draw_shape(num_sides):
-    angle= 360/num_sides
-    for i in range(num_sides):
 
-        timmy.forward(100)
-        timmy.right(angle)
+tim = t.Turtle()
 
-for shape_side_n in range(3,11):
-    timmy.color(random.choice(colours))
-    draw_shape(shape_side_n)
+########### Challenge 4 - Random Walk ########
+colours = ["CornflowerBlue", "DarkOrchid", "IndianRed", "DeepSkyBlue", "LightSeaGreen", "wheat", "SlateGray", "SeaGreen"]
+walk=True
+while walk==True:
+  i = random.randint(0,2)
 
-screen=Screen()
-screen.exitonclick()
+  for j in range(0,100):
+    if i ==0:
+      tim.right(j)
+      tim.forward(50)
+      tim.color(random.choice(colours))
+    elif i==1:
+      tim.color(random.choice(colours))
+      tim.left(j)
+      tim.forward(10)
